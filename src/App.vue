@@ -1,0 +1,39 @@
+<template>
+  <section
+      :v-loading="isLoading"
+      id="app">
+    <Header/>
+    <el-container>
+      <router-view/>
+    </el-container>
+  </section>
+</template>
+
+<style>
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+</style>
+<script>
+import Header from "@/components/header/Header";
+
+export default {
+  components: {
+    Header
+  },
+  computed:{
+    isLoading(){
+      return this.$store.getters.isLoading
+    }
+  }
+}
+</script>
