@@ -1,10 +1,10 @@
 import {dataApi} from "@/api/api";
 import {
     LOAD_DATA,
-    SAVE_DATA,
-    SET_LOADING,
-    SET_PORTFOLIO,
-    SET_STOCKS
+    SAVE_DATA, SET_FUNDS, SET_MY_STOCKS,
+    SET_STOCKS,
+    START_LOADING,
+    STOP_LOADING
 } from "@/store/type";
 
 
@@ -16,24 +16,25 @@ const actions = {
                 portfolio: getters.myStocks,
                 stocks: getters.stocks
             }
-            commit(SET_LOADING)
+            commit(START_LOADING)
             await dataApi.saveData(data)
         } catch (e) {
             console.log(e)
         } finally {
-            commit(SET_LOADING)
+            commit(STOP_LOADING)
         }
     },
     [LOAD_DATA]: async ({commit}) => {
         try {
-            commit(SET_LOADING)
+            commit(START_LOADING)
             const data = await dataApi.getData()
-            commit(SET_PORTFOLIO, {myStocks: data.portfolio, funds: data.funds})
+            commit(SET_MY_STOCKS, data.portfolio)
+            commit(SET_FUNDS, data.funds)
             commit(SET_STOCKS, data.stocks)
         } catch (e) {
             console.log(e)
         } finally {
-            commit(SET_LOADING)
+            commit(STOP_LOADING)
         }
     }
 }

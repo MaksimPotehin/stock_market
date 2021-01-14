@@ -1,6 +1,6 @@
 <template>
   <section
-      :v-loading="isLoading"
+      v-loading="isLoading"
       id="app">
     <Header/>
     <el-container>
