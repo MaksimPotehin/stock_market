@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const instance = axios.create({
-  baseURL: 'https://todoapp-4c0bd-default-rtdb.firebaseio.com/'
+  baseURL: process.env.VUE_APP_API_PATH
 })
 
 export const dataApi = {
