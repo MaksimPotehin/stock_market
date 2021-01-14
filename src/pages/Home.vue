@@ -19,11 +19,6 @@ export default {
     funds() {
       return this.$store.getters.funds
     }
-  },
-  filters: {
-    changeFunds(value) {
-      return '$' + value.toLocaleString()
-    }
   }
 }
 </script>

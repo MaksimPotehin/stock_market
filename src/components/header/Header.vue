@@ -24,16 +24,16 @@
 </template>
 
 <script>
-import {mapActions} from "vuex";
-import {END_DAY, LOAD_DATA, SAVE_DATA} from "@/store/type";
+import { mapActions } from 'vuex'
+import { END_DAY, LOAD_DATA, SAVE_DATA } from '@/store/type'
 
 export default {
-  name: "Header",
+  name: 'Header',
   data() {
     return {
-      activeIndex: "1",
-      activeIndex2: "1"
-    };
+      activeIndex: '1',
+      activeIndex2: '1'
+    }
   },
   computed: {
     funds() {
@@ -48,9 +48,9 @@ export default {
   },
   methods: {
     ...mapActions({
-      "endDay": END_DAY,
-      "saveData": SAVE_DATA,
-      "loadData": LOAD_DATA
+      endDay: END_DAY,
+      saveData: SAVE_DATA,
+      loadData: LOAD_DATA
     }),
     handleSelect() {
       // console.log('handleSelect',key, keyPath);
@@ -63,11 +63,6 @@ export default {
     },
     handleEndDay() {
       this.endDay()
-    }
-  },
-  filters: {
-    changeFunds(value) {
-      return "$" + value.toLocaleString()
     }
   }
 }
