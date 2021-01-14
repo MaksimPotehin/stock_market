@@ -1,4 +1,5 @@
 import { END_DAY, SET_STOCKS } from '@/store/type'
+import { rundomizeNumber } from '@/core/rundomizeNumber'
 
 const state = {
   stocks: [
@@ -23,7 +24,7 @@ const actions = {
       return {
         id: item.id,
         name: item.name,
-        price: Math.round(item.price * (0.5 + Math.random()))
+        price: rundomizeNumber(item.price)
       }
     })
     commit(END_DAY, newStocks)
