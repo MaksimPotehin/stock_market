@@ -1,45 +1,56 @@
-import {BUY_STOCK, SELL_STOCK, SET_PORTFOLIO} from "@/store/type";
+import {BUY_STOCK, SELL_STOCK, SET_FUNDS, SET_MY_STOCKS} from "@/store/type";
 
 const state = {
     funds: 10000,
     myStocks: [],
 }
 const mutations = {
-    [SET_PORTFOLIO](state, newData) {
-        state.myStocks = newData.myStocks ? newData.myStocks: []
-        state.funds = newData.funds
+    [SET_MY_STOCKS](state, newMyStocks){
+        state.myStocks = newMyStocks
     },
-    [BUY_STOCK](state, order) {
+    [SET_FUNDS](state, payload){
+        state.funds = payload
+    }
+}
+
+const actions = {
+    [SET_FUNDS]({commit}, payload) {
+        commit(SET_FUNDS, payload)
+    },
+    [BUY_STOCK]({commit, state}, order) {
+        // UPDATE MY STOCKS
+        let newMyStocks = JSON.parse(JSON.stringify(state.myStocks));
         const newStock = {
             id: order.id,
             name: order.name,
             quantity: order.quantity
         }
-        const currentStock = state.myStocks.find(item => item.id === order.id)
+        const currentStock = newMyStocks.find(item => item.id === order.id)
         if (!currentStock) {
-            state.myStocks.push(newStock)
+            newMyStocks.push(newStock)
         } else {
             currentStock.quantity += order.quantity
         }
-        state.funds -= order.quantity * order.price
+        // UPDATE FUNDS
+        const newFunds = state.funds - (order.quantity * order.price)
+
+        commit(SET_MY_STOCKS, newMyStocks)
+        commit(SET_FUNDS, newFunds)
     },
-    [SELL_STOCK](state, order) {
-        const currentStock = state.myStocks.find(item => item.id === order.id)
+    [SELL_STOCK]({commit, state}, order) {
+        // UPDATE MY STOCKS
+        let newMyStocks = JSON.parse(JSON.stringify(state.myStocks));
+        let currentStock = newMyStocks.find(item => item.id === order.id)
         if (currentStock.quantity !== order.quantity) {
             currentStock.quantity -= order.quantity
         } else {
-            state.myStocks.splice(state.myStocks.indexOf(currentStock), 1)
+            newMyStocks.splice(newMyStocks.indexOf(currentStock), 1)
         }
-        state.funds += order.quantity * order.price
-    }
-}
+        // UPDATE FUNDS
+        const newFunds = state.funds + (order.quantity * order.price)
 
-const actions = {
-    [BUY_STOCK]({commit}, order) {
-        commit(BUY_STOCK, order)
-    },
-    [SELL_STOCK]({commit}, order) {
-        commit(SELL_STOCK, order)
+        commit(SET_MY_STOCKS, newMyStocks)
+        commit(SET_FUNDS, newFunds)
     }
 }
 

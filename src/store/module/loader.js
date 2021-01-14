@@ -1,16 +1,14 @@
-import {SET_LOADING} from "@/store/type";
+import {START_LOADING, STOP_LOADING} from "@/store/type";
 
 const state = {
     isLoading: false
 }
 const mutations = {
-    [SET_LOADING](state){
-        state.isLoading = !state.isLoading
-    }
-}
-const actions = {
-    setLoading({commit}){
-        commit(SET_LOADING)
+    [START_LOADING](state){
+        state.isLoading = true
+    },
+    [STOP_LOADING](state){
+        state.isLoading = false
     }
 }
 const getters = {
@@ -22,6 +20,5 @@ const getters = {
 export default {
     state,
     mutations,
-    actions,
     getters
 }
