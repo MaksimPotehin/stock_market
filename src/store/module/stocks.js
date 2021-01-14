@@ -12,15 +12,21 @@ const mutations = {
     [SET_STOCKS](state, newData) {
         state.stocks = newData
     },
-    [END_DAY](state) {
-        state.stocks.map(item => {
-            item.price = Math.round(item.price * (0.5 + Math.random()))
-        })
+    [END_DAY](state, newStocks) {
+        state.stocks = newStocks
     }
 }
 const actions = {
-    [END_DAY]({commit}) {
-        commit(END_DAY)
+    [END_DAY]({commit, state}) {
+        let stocks = JSON.parse(JSON.stringify(state.stocks));
+        let newStocks = stocks.map(item => {
+            return {
+                id: item.id,
+                name: item.name,
+                price: Math.round(item.price * (0.5 + Math.random()))
+            }
+        })
+        commit(END_DAY, newStocks)
     }
 }
 const getters = {
