@@ -11,19 +11,18 @@
   </el-main>
 </template>
 
-
 <script>
 
 export default {
-  name: "Home",
-  computed:{
-    funds(){
-      return  this.$store.getters.funds
+  name: 'Home',
+  computed: {
+    funds() {
+      return this.$store.getters.funds
     }
   },
-  filters:{
-    changeFunds(value){
-      return "$" + value.toLocaleString()
+  filters: {
+    changeFunds(value) {
+      return '$' + value.toLocaleString()
     }
   }
 }

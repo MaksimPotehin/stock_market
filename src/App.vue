@@ -24,14 +24,14 @@ a {
 }
 </style>
 <script>
-import Header from "@/components/header/Header";
+import Header from '@/components/header/Header'
 
 export default {
   components: {
     Header
   },
-  computed:{
-    isLoading(){
+  computed: {
+    isLoading() {
       return this.$store.getters.isLoading
     }
   }
