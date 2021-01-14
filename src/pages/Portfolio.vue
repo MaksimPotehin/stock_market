@@ -15,11 +15,11 @@
 </template>
 
 <script>
-import Stock from "@/components/Stock";
+import Stock from '@/components/Stock'
 
 export default {
-  name: "Portfolio",
-  components: {Stock},
+  name: 'Portfolio',
+  components: { Stock },
   computed: {
     myStocks() {
       return this.$store.getters.myStocks
