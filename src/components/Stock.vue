@@ -23,29 +23,29 @@
 </template>
 
 <script>
-import {mapActions} from "vuex"
-import {BUY_STOCK, SELL_STOCK} from "@/store/type";
+import { mapActions } from 'vuex'
+import { BUY_STOCK, SELL_STOCK } from '@/store/type'
 
 export default {
-  name: "Stock",
+  name: 'Stock',
   data() {
     return {
       count: 1
     }
   },
-  props: ["item", "type"],
+  props: ['item', 'type'],
   methods: {
     ...mapActions({
       buy: BUY_STOCK,
-      sell: SELL_STOCK,
+      sell: SELL_STOCK
     }),
     handleClick() {
       const quantity = parseInt(this.count)
-      if (this.type === "stocks") {
-        this.buy({...this.item, quantity})
+      if (this.type === 'stocks') {
+        this.buy({ ...this.item, quantity })
         this.count = 1
       } else {
-        this.sell({...this.item, quantity})
+        this.sell({ ...this.item, quantity })
         this.count = 1
       }
     }
@@ -55,7 +55,7 @@ export default {
       return this.$store.getters.funds
     },
     pageProps() {
-      if (this.type === "stocks") {
+      if (this.type === 'stocks') {
         return {
           disabled: this.count * this.item.price >= this.funds,
           subtitle: this.item.price
@@ -63,7 +63,7 @@ export default {
       } else {
         return {
           disabled: this.item.quantity < this.count,
-          subtitle: this.item.price + " | quantity: " + this.item.quantity
+          subtitle: this.item.price + ' | quantity: ' + this.item.quantity
         }
       }
     }

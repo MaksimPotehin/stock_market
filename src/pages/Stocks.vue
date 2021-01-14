@@ -14,13 +14,12 @@
   </el-main>
 </template>
 
-
 <script>
-import Stock from "@/components/Stock";
+import Stock from '@/components/Stock'
 
 export default {
-  name: "Stocks",
-  components: {Stock},
+  name: 'Stocks',
+  components: { Stock },
   computed: {
     stocks() {
       return this.$store.getters.stocks
