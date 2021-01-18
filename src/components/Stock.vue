@@ -1,24 +1,22 @@
 <template>
-  <el-col :xs="24" :md="12" :lg="8" class="card-wrapper">
-    <div class="card">
-      <div class="card-header">
-        <h2>{{ item.name }}</h2>
-        <h4>( price: {{ pageProps.subtitle | changeFunds }} )</h4>
-      </div>
-      <div class="card-content items-baseline">
-        <Input
-            placeholder="Please input"
-            inputType="number"
-            v-model="count"
-        />
-        <Button
-            :text="type === 'stocks' ? 'Buy' : 'Sell'"
-            :disabled="pageProps.disabled"
-            @handleClick="handleClick"
-        />
-      </div>
+  <div class="card">
+    <div class="card-header">
+      <h2>{{ item.name }}</h2>
+      <h4>( price: {{ pageProps.subtitle | changeFunds }} )</h4>
     </div>
-  </el-col>
+    <div class="card-content items-baseline">
+      <Input
+          placeholder="Please input"
+          inputType="number"
+          v-model="count"
+      />
+      <Button
+          :text="type === 'stocks' ? 'Buy' : 'Sell'"
+          :disabled="pageProps.disabled"
+          @handleClick="handleClick"
+      />
+    </div>
+  </div>
 </template>
 
 <script>
@@ -80,9 +78,6 @@ export default {
 </script>
 
 <style scoped>
-.card-wrapper {
-  padding: 30px;
-}
 
 .card {
   border: 1px solid #cecece;
