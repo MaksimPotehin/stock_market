@@ -3,9 +3,9 @@
       v-loading="isLoading"
       id="app">
     <Header/>
-    <el-container>
+    <div class="2xl:container mx-auto">
       <router-view/>
-    </el-container>
+    </div>
   </section>
 </template>
 
