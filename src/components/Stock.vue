@@ -3,20 +3,19 @@
     <div class="card">
       <div class="card-header">
         <h2>{{ item.name }}</h2>
-        <h4>( price: {{ pageProps.subtitle }} )</h4>
+        <h4>( price: {{ pageProps.subtitle | changeFunds }} )</h4>
       </div>
-      <div class="card-content">
-        <el-input
+      <div class="card-content items-baseline">
+        <Input
             placeholder="Please input"
-            type="number"
-            v-model="count"></el-input>
-        <el-button
-            @click="handleClick"
-            type="success"
+            inputType="number"
+            v-model="count"
+        />
+        <Button
+            :text="type === 'stocks' ? 'Buy' : 'Sell'"
             :disabled="pageProps.disabled"
-        >
-          {{ type === "stocks" ? "Buy" : "Sell" }}
-        </el-button>
+            @handleClick="handleClick"
+        />
       </div>
     </div>
   </el-col>
@@ -25,9 +24,12 @@
 <script>
 import { mapActions } from 'vuex'
 import { BUY_STOCK, SELL_STOCK } from '@/store/type'
+import Button from '@/components/Button'
+import Input from '@/components/Input'
 
 export default {
   name: 'Stock',
+  components: { Button, Input },
   data() {
     return {
       count: 1
@@ -42,10 +44,16 @@ export default {
     handleClick() {
       const quantity = parseInt(this.count)
       if (this.type === 'stocks') {
-        this.buy({ ...this.item, quantity })
+        this.buy({
+          ...this.item,
+          quantity
+        })
         this.count = 1
       } else {
-        this.sell({ ...this.item, quantity })
+        this.sell({
+          ...this.item,
+          quantity
+        })
         this.count = 1
       }
     }
