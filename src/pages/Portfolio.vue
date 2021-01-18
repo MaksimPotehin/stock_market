@@ -1,17 +1,15 @@
 <template>
-  <el-main class="portfolio">
-    <el-row>
-      <el-col :span="24">
-        <h1>Portfolio:</h1>
-      </el-col>
+  <main class="flex-1 p-5">
+    <h1>Portfolio:</h1>
+    <div class="flex flex-wrap">
       <Stock
           v-for="item of myStocks"
           :item="item"
           :key="item.id"
           :name="'portfolio'"
       />
-    </el-row>
-  </el-main>
+    </div>
+  </main>
 </template>
 
 <script>
