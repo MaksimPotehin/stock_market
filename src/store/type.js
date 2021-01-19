@@ -16,3 +16,9 @@ export const LOAD_DATA = 'loadData/LOAD_DATA'
 // loader
 export const START_LOADING = 'loader/START_LOADING'
 export const STOP_LOADING = 'loader/STOP_LOADING'
+
+// auth
+export const SET_NEW_USER = 'auth/SET_NEW_USER'
+export const AUTH_USER = 'auth/AUTH_USER'
+export const AUTH_SUCCESS = 'auth/AUTH_SUCCESS'
+export const LOGOUT = 'auth/LOGOUT'

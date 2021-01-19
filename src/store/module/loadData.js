@@ -1,4 +1,4 @@
-import { dataApi } from '@/core/api'
+import { dataApi } from '@/core/api/api'
 import {
   LOAD_DATA,
   SAVE_DATA, SET_FUNDS, SET_MY_STOCKS,
