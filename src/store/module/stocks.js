@@ -2,12 +2,7 @@ import { END_DAY, SET_STOCKS } from '@/store/type'
 import { rundomizeNumber } from '@/core/rundomizeNumber'
 
 const state = {
-  stocks: [
-    { id: 1, name: 'Bmw', price: 100 },
-    { id: 2, name: 'Google', price: 800 },
-    { id: 3, name: 'Apple', price: 140 },
-    { id: 4, name: 'Twitter', price: 40 }
-  ]
+  stocks: []
 }
 const mutations = {
   [SET_STOCKS](state, newData) {
