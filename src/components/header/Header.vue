@@ -6,7 +6,7 @@
           <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
             <!-- Mobile menu button-->
             <button @click="isMenuOpen=!isMenuOpen" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-black focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white" aria-expanded="false">
-              <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+              <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
@@ -17,7 +17,6 @@
             </div>
             <div class="hidden sm:block sm:ml-6">
               <div class="flex space-x-4">
-                <router-link class="px-3 py-2 text-sm" to="/">Stocks</router-link>
                 <router-link class="text-gray-500 hover:text-black px-3 py-2 rounded-md text-sm" to="/stocks">Stocks</router-link>
                 <router-link class="text-gray-500 hover:text-black px-3 py-2 rounded-md text-sm" to="/portfolio">Portfolio</router-link>
                 <!--dropdown-->
@@ -72,7 +71,6 @@
 
 <script>
 import { mapActions } from 'vuex'
-import { END_DAY, LOAD_DATA, SAVE_DATA } from '@/store/type'
 
 export default {
   name: 'Header',
@@ -85,19 +83,13 @@ export default {
   computed: {
     funds() {
       return this.$store.getters.funds
-    },
-    myStoks() {
-      return this.$store.getters.myStocks
-    },
-    stocks() {
-      return this.$store.getters.stocks
     }
   },
   methods: {
     ...mapActions({
-      endDay: END_DAY,
-      saveData: SAVE_DATA,
-      loadData: LOAD_DATA
+      endDay: 'endDay',
+      saveData: 'saveData',
+      loadData: 'loadData'
     }),
     handleSaveData() {
       this.saveData()

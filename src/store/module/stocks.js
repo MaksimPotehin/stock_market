@@ -18,7 +18,7 @@ const mutations = {
   }
 }
 const actions = {
-  [END_DAY]({ commit, state }) {
+  endDay({ commit, state }) {
     const stocks = JSON.parse(JSON.stringify(state.stocks))
     const newStocks = stocks.map(item => {
       return {

@@ -1,14 +1,13 @@
 import { dataApi } from '@/core/api'
 import {
-  LOAD_DATA,
-  SAVE_DATA, SET_FUNDS, SET_MY_STOCKS,
+  SET_FUNDS, SET_MY_STOCKS,
   SET_STOCKS,
   START_LOADING,
   STOP_LOADING
 } from '@/store/type'
 
 const actions = {
-  [SAVE_DATA]: async({ commit, getters }) => {
+  saveData: async({ commit, getters }) => {
     try {
       const data = {
         funds: getters.funds,
@@ -23,7 +22,7 @@ const actions = {
       commit(STOP_LOADING)
     }
   },
-  [LOAD_DATA]: async({ commit }) => {
+  loadData: async({ commit }) => {
     try {
       commit(START_LOADING)
       const data = await dataApi.getData()

@@ -1,4 +1,4 @@
-import { BUY_STOCK, SELL_STOCK, SET_FUNDS, SET_MY_STOCKS } from '@/store/type'
+import { SET_FUNDS, SET_MY_STOCKS } from '@/store/type'
 
 const state = {
   funds: 10000,
@@ -14,10 +14,10 @@ const mutations = {
 }
 
 const actions = {
-  [SET_FUNDS]({ commit }, payload) {
-    commit(SET_FUNDS, payload)
-  },
-  [BUY_STOCK]({ commit, state }, order) {
+  // [SET_FUNDS]({ commit }, payload) {
+  //   commit(SET_FUNDS, payload)
+  // },
+  buyStock({ commit, state }, order) {
     // UPDATE MY STOCKS
     const newMyStocks = JSON.parse(JSON.stringify(state.myStocks))
     const newStock = {
@@ -37,7 +37,7 @@ const actions = {
     commit(SET_MY_STOCKS, newMyStocks)
     commit(SET_FUNDS, newFunds)
   },
-  [SELL_STOCK]({ commit, state }, order) {
+  sellStock({ commit, state }, order) {
     // UPDATE MY STOCKS
     const newMyStocks = JSON.parse(JSON.stringify(state.myStocks))
     const currentStock = newMyStocks.find(item => item.id === order.id)

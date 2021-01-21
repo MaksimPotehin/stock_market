@@ -21,7 +21,6 @@
 
 <script>
 import { mapActions } from 'vuex'
-import { BUY_STOCK, SELL_STOCK } from '@/store/type'
 import Button from '@/components/Button'
 import Input from '@/components/Input'
 
@@ -36,8 +35,8 @@ export default {
   props: ['item', 'type'],
   methods: {
     ...mapActions({
-      buy: BUY_STOCK,
-      sell: SELL_STOCK
+      buy: 'buyStock',
+      sell: 'sellStock'
     }),
     handleClick() {
       const quantity = parseInt(this.count)
