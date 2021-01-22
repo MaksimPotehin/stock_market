@@ -1,5 +1,3 @@
-// import { SET_FUNDS, SET_MY_STOCKS } from '@/store/type'
-
 const namespaced = true
 
 const state = {
