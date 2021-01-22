@@ -42,16 +42,10 @@ export default {
     handleClick() {
       const quantity = parseInt(this.count)
       if (this.type === 'stocks') {
-        this.buy({
-          ...this.item,
-          quantity
-        })
+        this.buy({ ...this.item, quantity })
         this.count = 1
       } else {
-        this.sell({
-          ...this.item,
-          quantity
-        })
+        this.sell({ ...this.item, quantity })
         this.count = 1
       }
     }
