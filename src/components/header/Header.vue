@@ -87,7 +87,7 @@ export default {
   },
   methods: {
     ...mapActions({
-      endDay: 'endDay',
+      endDay: 'stocks/endDay',
       saveData: 'saveData',
       loadData: 'loadData'
     }),

@@ -1,14 +1,15 @@
-import { END_DAY, SET_STOCKS } from '@/store/type'
 import { rundomizeNumber } from '@/core/rundomizeNumber'
+
+const namespaced = true
 
 const state = {
   stocks: []
 }
 const mutations = {
-  [SET_STOCKS](state, newData) {
+  SET_STOCKS(state, newData) {
     state.stocks = newData
   },
-  [END_DAY](state, newStocks) {
+  END_DAY(state, newStocks) {
     state.stocks = newStocks
   }
 }
@@ -22,7 +23,7 @@ const actions = {
         price: rundomizeNumber(item.price)
       }
     })
-    commit(END_DAY, newStocks)
+    commit('END_DAY', newStocks)
   }
 }
 const getters = {
@@ -35,5 +36,6 @@ export default {
   state,
   mutations,
   actions,
-  getters
+  getters,
+  namespaced
 }

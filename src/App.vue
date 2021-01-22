@@ -25,7 +25,6 @@ a {
 </style>
 <script>
 import Header from '@/components/header/Header'
-import { SET_STOCKS } from '@/store/type'
 import { initialData } from '@/data'
 
 export default {
@@ -38,7 +37,7 @@ export default {
     }
   },
   created() {
-    this.$store.commit(SET_STOCKS, initialData)
+    this.$store.commit('stocks/SET_STOCKS', initialData)
   }
 }
 </script>

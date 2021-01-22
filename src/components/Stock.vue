@@ -35,8 +35,8 @@ export default {
   props: ['item', 'type'],
   methods: {
     ...mapActions({
-      buy: 'buyStock',
-      sell: 'sellStock'
+      buy: 'portfolio/buyStock',
+      sell: 'portfolio/sellStock'
     }),
     handleClick() {
       const quantity = parseInt(this.count)
