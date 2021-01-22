@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapState } from 'vuex'
 import Button from '@/components/Button'
 import Input from '@/components/Input'
 
@@ -56,9 +56,9 @@ export default {
     }
   },
   computed: {
-    funds() {
-      return this.$store.getters.funds
-    },
+    ...mapState({
+      funds: state => state.portfolio.funds
+    }),
     pageProps() {
       if (this.type === 'stocks') {
         return {
