@@ -13,12 +13,14 @@
 
 <script>
 
+import { mapState } from 'vuex'
+
 export default {
   name: 'Home',
   computed: {
-    funds() {
-      return this.$store.getters.funds
-    }
+    ...mapState({
+      funds: state => state.portfolio.funds
+    })
   }
 }
 </script>

@@ -20,8 +20,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-import { BUY_STOCK, SELL_STOCK } from '@/store/type'
+import { mapActions, mapState } from 'vuex'
 import Button from '@/components/Button'
 import Input from '@/components/Input'
 
@@ -36,24 +35,30 @@ export default {
   props: ['item', 'type'],
   methods: {
     ...mapActions({
-      buy: BUY_STOCK,
-      sell: SELL_STOCK
+      buy: 'portfolio/buyStock',
+      sell: 'portfolio/sellStock'
     }),
     handleClick() {
       const quantity = parseInt(this.count)
       if (this.type === 'stocks') {
-        this.buy({ ...this.item, quantity })
+        this.buy({
+          ...this.item,
+          quantity
+        })
         this.count = 1
       } else {
-        this.sell({ ...this.item, quantity })
+        this.sell({
+          ...this.item,
+          quantity
+        })
         this.count = 1
       }
     }
   },
   computed: {
-    funds() {
-      return this.$store.getters.funds
-    },
+    ...mapState({
+      funds: state => state.portfolio.funds
+    }),
     pageProps() {
       if (this.type === 'stocks') {
         return {

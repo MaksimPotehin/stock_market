@@ -25,6 +25,7 @@ a {
 </style>
 <script>
 import Header from '@/components/header/Header'
+import { initialData } from '@/data'
 
 export default {
   components: {
@@ -34,6 +35,9 @@ export default {
     isLoading() {
       return this.$store.getters.isLoading
     }
+  },
+  created() {
+    this.$store.commit('stocks/SET_STOCKS', initialData)
   }
 }
 </script>

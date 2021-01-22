@@ -14,14 +14,15 @@
 
 <script>
 import Stock from '@/components/Stock'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'Stocks',
   components: { Stock },
   computed: {
-    stocks() {
-      return this.$store.getters.stocks
-    }
+    ...mapGetters('stocks', {
+      stocks: 'stocks'
+    })
   }
 }
 </script>

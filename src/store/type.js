@@ -1,8 +1,6 @@
 
 // portfolio
 export const SET_MY_STOCKS = 'portfolio/SET_MY_STOCKS'
-export const BUY_STOCK = 'portfolio/BUY_STOCK'
-export const SELL_STOCK = 'portfolio/SELL_STOCK'
 export const SET_FUNDS = 'portfolio/SET_FUNDS'
 
 // stocks
