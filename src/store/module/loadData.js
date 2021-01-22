@@ -1,4 +1,4 @@
-import { dataApi } from '@/core/api'
+import { dataApi } from '@/core/api/api'
 import {
   START_LOADING,
   STOP_LOADING

@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../pages/Home.vue'
+import SignIn from '@/components/auth/SignIn'
+import SignUp from '@/components/auth/SignUp'
 
 Vue.use(VueRouter)
 
@@ -19,6 +21,21 @@ const routes = [
     path: '/portfolio',
     name: 'Portfolio',
     component: () => import('../pages/Portfolio.vue')
+  },
+  {
+    path: '/auth/',
+    name: 'Auth',
+    component: () => import('../pages/Auth.vue'),
+    children: [
+      {
+        path: 'signIn',
+        component: SignIn
+      },
+      {
+        path: 'signUp',
+        component: SignUp
+      }
+    ]
   }
 ]
 
